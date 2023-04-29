@@ -6,17 +6,28 @@ const Signup = () => {
   const [username, setUsername] = useState()
   const [password, setPassword] = useState()
   const navigate = useNavigate()
-  const handleButtonClick = route => {
-    navigate(route)
-  }
+
+  // const handleButtonClick = route => {
+  //   navigate(route)
+  // }
   function handleClick (e) {
     e.preventDefault()
     console.log(username, password)
+
     axios.post('/api/signup', {
       username,
       password
     })
+      // .then(response => {
+      //   console.log(response);
+      //   console.log('in the .then')
+      //   navigate('/settings/')
+      //   console.log('after navigate hook')
+      // })
+      navigate('/settings/')
+
   }
+
   return (
     <div id='signup'>
       <form
@@ -46,7 +57,7 @@ const Signup = () => {
          className='submit_btn'
          type="submit"
          value={'Submit'}
-         onClick={() => handleButtonClick('/settings/')}
+        //  onClick={() => handleButtonClick('/settings/')}
         />
       </form>
     </div>
