@@ -27,12 +27,10 @@ UserController.verifyUser = (req, res, next) => {
   db.query(text, values)
     .then(result => {
       if (result.rows.length === 0) {
-        return next({
-          log: 'There was an unknown error',
-          status: 500,
-          message: { err: 'An error occured!' }
-        })
+        res.locals.verification = false;
+        return next();
       } else {
+        res.locals.verification = true;
         res.locals.username = req.body.username
         return next()
       }
