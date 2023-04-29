@@ -27,10 +27,10 @@ UserController.verifyUser = (req, res, next) => {
   db.query(text, values)
     .then(result => {
       if (result.rows.length === 0) {
-        res.locals.verification = false;
-        return next();
+        res.locals.verification = false
+        return next()
       } else {
-        res.locals.verification = true;
+        res.locals.verification = true
         res.locals.username = req.body.username
         return next()
       }
@@ -49,7 +49,7 @@ UserController.setCookie = (req, res, next) => {
 UserController.updateUser = (req, res, next) => {
   console.log('inside of updateUser middleware')
 
-  const { housing, kids, age } = req.body;
+  const { housing, kids, age } = req.body
   const text = 'UPDATE users SET housing = $1, kids = $2, age = $3 WHERE username = $4'
   const values = [housing, kids, age, req.cookie.username]
 
@@ -61,8 +61,8 @@ UserController.updateUser = (req, res, next) => {
         message: { err: 'An error occured while updating user!' }
       })
     } else {
-      console.log('successfully updated user')
-      return next()
+      console.log('exiting middleware')
+      next()
     }
   })
 }
