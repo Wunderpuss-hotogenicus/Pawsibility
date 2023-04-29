@@ -16,8 +16,10 @@ app.post('/api/signup', UserController.createUser, (req, res) => {
   return res.status(200)
 })
 
-app.get('api/login', UserController.verifyUser, UserController.setCookie, (req, res) => {
-  return res.status(200)
+app.post('/api/login', UserController.verifyUser, UserController.setCookie, (req, res) => {
+  console.log('finished loging post request')
+  console.log(res.locals.verification);
+  return res.status(200).json(res.locals.verification);
 })
 
 // GLOBAL ERROR HANDLER
