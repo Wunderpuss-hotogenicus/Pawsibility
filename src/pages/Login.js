@@ -1,10 +1,10 @@
 import axios from 'axios'
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'
 const Login = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const navigate = useNavigate();
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+  const navigate = useNavigate()
   const handleUsernameChange = (event) => {
     setUsername(event.target.value)
   }
@@ -21,26 +21,25 @@ const Login = () => {
       username,
       password
     })
-    .then(response => {
-      //redirect to home
-      console.log('res', response.data)
-      if (response.data){
-        navigate('/')
-      }
-      else {
-        navigate('/signup')
-      }
+      .then(response => {
+      // redirect to home
+        console.log('res', response.data)
+        if (response.data) {
+          navigate('/main')
+        } else {
+          navigate('/signup')
+        }
       })
-    .catch(err => { 
-        console.log(`Username: ${username}, Password: ${password}`);
-        setUsername('');
+      .catch(err => {
+        console.log(`Username: ${username}, Password: ${password}`)
+        setUsername('')
         setPassword('')
-    })   
- }
-  
-  
+      })
+  }
+
   return (
    <div>
+    Log In
     <form onSubmit={handleSubmit}>
       <label>
         Username:

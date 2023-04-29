@@ -7,20 +7,16 @@ const Settings = () => {
   const [kids, setKids] = useState()
   const [age, setAge] = useState()
   const navigate = useNavigate()
-  // const handleButtonClick = route => {
-  //   navigate(route)
-  // }
   function handleClick (e) {
     e.preventDefault()
-    console.log(housing, kids, age);
-    console.log(Boolean(kids));
+    console.log(housing, kids, age)
+    console.log(Boolean(kids))
     axios.patch('/api/form', {
       housing,
       kids,
       age
     })
-    navigate('/')
-    // .then(response => navigate(/home/))
+    navigate('/Main')
   }
   return (
     <div id='settings'>
@@ -33,6 +29,7 @@ const Settings = () => {
         id="housingChoice"
         onChange={(e) => setHousing(e.target.value)}
         >
+          <option></option>
           <option value='Apartment'>Apartment</option>
           <option value='House'>House</option>
         </select>
@@ -41,6 +38,7 @@ const Settings = () => {
         name="kidsQuestion"
         id="kidsChoice"
         onChange={(e) => setKids(e.target.value)}>
+          <option></option>
           <option value={true}>Yes</option>
           <option value={false}>No</option>
         </select>
@@ -55,7 +53,6 @@ const Settings = () => {
          <input
          type="submit"
          value={'Submit'}
-        //  onClick={() => handleButtonClick('/main/')}
         />
       </form>
     </div>
