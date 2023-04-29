@@ -1,4 +1,5 @@
 const { Pool } = require('pg')
+const pg = require('pg')
 
 const PG_URI = 'postgres://umstoiyr:U9P0OC9o5e9QTRQmgLOlp8sfSF9jPLl1@isilo.db.elephantsql.com/umstoiyr'
 
