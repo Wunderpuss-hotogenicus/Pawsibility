@@ -35,7 +35,7 @@ const config = {
     rules: [
       {
         test: /\.(js|jsx)$/i,
-        exlclude: /node_modules/,
+        exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
           options: {
@@ -47,17 +47,17 @@ const config = {
       },
       {
         test: /\.s[ac]ss$/i,
-        exlclude: /node_modules/,
+        exclude: /node_modules/,
         use: [stylesHandler, "css-loader", "postcss-loader", "sass-loader"],
       },
       {
         test: /\.css$/i,
-        exlclude: /node_modules/,
+        exclude: /node_modules/,
         use: [stylesHandler, "css-loader", "postcss-loader"],
       },
       {
         test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
-        exlclude: /node_modules/,
+        exclude: /node_modules/,
         type: "asset",
       },
 
