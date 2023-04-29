@@ -25,9 +25,9 @@ module.exports = {
 //     id SERIAL PRIMARY KEY,
 //     Username VARCHAR(255) NOT NULL,
 //     Password VARCHAR(255) NOT NULL,
-//     Housing VARCHAR(255) NOT NULL,
-//     Kids BOOLEAN NOT NULL,
-//     Age INTEGER NOT NULL
+//     Housing VARCHAR(255),
+//     Kids BOOLEAN,
+//     Age INTEGER
 //   );
 
 // CREATE TABLE dogs (

@@ -6,10 +6,10 @@ const NavBar = () => {
     navigate(route)
   }
   return (
-    <div>
-      <button onClick={() => handleButtonClick('/')}>Home</button>
-      <button onClick={() => handleButtonClick('/signup/')}>Signup</button>
-      <button onClick={() => handleButtonClick('/login/')}>Login</button>
+    <div className='button_container'>
+      {/* <button onClick={() => handleButtonClick('/')}>Home</button> */}
+      <button className = "signup_btn" onClick={() => handleButtonClick('/signup/')}>Signup</button>
+      <button className = "login_btn" onClick={() => handleButtonClick('/login/')}>Login</button>
     </div>
   )
 }

@@ -22,8 +22,8 @@ UserController.createUser = (req, res, next) => {
 
 UserController.verifyUser = (req, res, next) => {
   console.log('inside verify user middleware')
-  const text = 'SELECT * FROM users WHERE username = $1'
-  const values = [req.body.username]
+  const text = 'SELECT * FROM users WHERE username = $1 AND password = $2'
+  const values = [req.body.username, req.body.password]
 
   db.query(text, values)
     .then(result => {
