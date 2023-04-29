@@ -11,12 +11,12 @@ const PORT = 3000
 
 // app.get('/', UserController.addcookie, (req, res))
 
-app.post('/signup', UserController.createUser, (req, res) => {
+app.post('/api/signup', UserController.createUser, (req, res) => {
   console.log('back in the router for signup')
   return res.status(200)
 })
 
-app.get('/login', UserController.verifyUser, UserController.setCookie, (req, res) => {
+app.get('api/login', UserController.verifyUser, UserController.setCookie, (req, res) => {
   return res.status(200)
 })
 

@@ -14,7 +14,6 @@ UserController.createUser = (req, res, next) => {
         message: { err: 'An error occured!' }
       })
     } else {
-      console.log(result.rows[0])
       next()
     }
   })
@@ -22,8 +21,8 @@ UserController.createUser = (req, res, next) => {
 
 UserController.verifyUser = (req, res, next) => {
   console.log('inside verify user middleware')
-  const text = 'SELECT * FROM users WHERE username = $1'
-  const values = [req.body.username]
+  const text = 'SELECT * FROM users WHERE username = $1 AND password = $2'
+  const values = [req.body.username, req.body.password]
 
   db.query(text, values)
     .then(result => {
@@ -48,3 +47,5 @@ UserController.setCookie = (req, res, next) => {
   res.cookie('username', res.locals.username)
   return next()
 }
+
+module.exports = UserController
