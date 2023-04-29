@@ -6,6 +6,7 @@ import Home from './pages/Home'
 import Signup from './pages/Signup'
 import Fav from './pages/Fav'
 import Settings from './pages/Settings'
+import NotFound from './pages/NotFound'
 
 const App = () => {
   // const navigate = useNavigate()
@@ -22,6 +23,7 @@ const App = () => {
       <Route path='/signup' element={<Signup/>}/>
       <Route path='/fav' element={<Fav/>}/>
       <Route path='/settings' element={<Settings/>}/>
+      <Route path='/*' element={<NotFound/>}/>
         {/* <Route index element={<BookList />}/>
         <Route path=":id" element={<Book />}/>
         <Route path="new" element={<NewBook />}/> */}
