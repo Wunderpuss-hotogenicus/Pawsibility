@@ -1,12 +1,19 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router'
 import axios from 'axios'
+<<<<<<< HEAD
 import '../styles/App.css'
 
+=======
+>>>>>>> dev
 
 const Signup = () => {
   const [username, setUsername] = useState()
   const [password, setPassword] = useState()
-
+  const navigate = useNavigate()
+  const handleButtonClick = route => {
+    navigate(route)
+  }
   function handleClick (e) {
     e.preventDefault()
     console.log(username, password)
@@ -44,6 +51,7 @@ const Signup = () => {
          className='submit_btn'
          type="submit"
          value={'Submit'}
+         onClick={() => handleButtonClick('/settings/')}
         />
       </form>
     </div>
