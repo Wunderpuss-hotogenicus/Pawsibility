@@ -1,11 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router'
 import axios from 'axios'
-<<<<<<< HEAD
-import '../styles/App.css'
-
-=======
->>>>>>> dev
 
 const Signup = () => {
   const [username, setUsername] = useState()
