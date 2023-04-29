@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router'
+import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
 const Settings = () => {
@@ -12,12 +12,15 @@ const Settings = () => {
   // }
   function handleClick (e) {
     e.preventDefault()
-    axios.patch('/api/signup', {
+    console.log(housing, kids, age);
+    console.log(Boolean(kids));
+    axios.patch('/api/form', {
       housing,
       kids,
       age
     })
-      .then(response => navigate(/home/))
+    navigate('/')
+    // .then(response => navigate(/home/))
   }
   return (
     <div id='settings'>

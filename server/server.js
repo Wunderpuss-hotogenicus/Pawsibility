@@ -18,13 +18,14 @@ app.post('/api/signup', UserController.createUser, (req, res) => {
 
 app.post('/api/login', UserController.verifyUser, UserController.setCookie, (req, res) => {
   console.log('finished loging post request')
-  console.log(res.locals.verification);
-  return res.status(200).json(res.locals.verification);
+  console.log(res.locals.verification)
+  return res.status(200).json(res.locals.verification)
 })
 
-app.patch('api/form', UserController.updateUser, (req, res) => {
+app.patch('/api/form', UserController.updateUser, (req, res) => {
   console.log('back in the router for updsateUser')
   res.send(200)
+})
 
 // GLOBAL ERROR HANDLER
 app.use((err, req, res, next) => {

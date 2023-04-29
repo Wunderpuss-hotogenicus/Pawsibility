@@ -61,6 +61,7 @@ UserController.updateUser = (req, res, next) => {
         message: { err: 'An error occured while updating user!' }
       })
     } else {
+      console.log('exiting middleware')
       next()
     }
   })
