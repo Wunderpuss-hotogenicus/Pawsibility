@@ -22,6 +22,10 @@ app.post('/api/login', UserController.verifyUser, UserController.setCookie, (req
   return res.status(200).json(res.locals.verification);
 })
 
+app.patch('api/form', UserController.updateUser, (req, res) => {
+  console.log('back in the router for updsateUser')
+  res.send(200)
+
 // GLOBAL ERROR HANDLER
 app.use((err, req, res, next) => {
   const defaultError = {
