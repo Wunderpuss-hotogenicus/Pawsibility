@@ -17,12 +17,13 @@ app.post('/api/signup', UserController.createUser, (req, res) => {
 })
 
 app.post('api/login', UserController.verifyUser, UserController.setCookie, (req, res) => {
-  console.log('successfully logged in');
+  console.log('successfully logged in')
   return res.status(200).redirect('../src/pages/Home.js')
 })
 
 app.patch('api/form', UserController.updateUser, (req, res) => {
-
+  console.log('back in the router for updsateUser')
+  res.send(200)
 })
 
 // GLOBAL ERROR HANDLER

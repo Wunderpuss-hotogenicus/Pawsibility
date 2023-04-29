@@ -48,10 +48,10 @@ UserController.setCookie = (req, res, next) => {
   return next()
 }
 
-UserController.updateUser = (req,res,next) => {
+UserController.updateUser = (req, res, next) => {
   console.log('inside of updateUser middleware')
 
-  const {housing, kids,age} = req.body;
+  const { housing, kids, age } = req.body;
   const text = 'UPDATE users SET housing = $1, kids = $2, age = $3 WHERE username = $4'
   const values = [housing, kids, age, req.cookie.username]
 
@@ -63,7 +63,8 @@ UserController.updateUser = (req,res,next) => {
         message: { err: 'An error occured while updating user!' }
       })
     } else {
-      next()
+      console.log('successfully updated user')
+      return next()
     }
   })
 }
