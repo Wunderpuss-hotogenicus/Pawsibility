@@ -6,6 +6,7 @@ import Home from './pages/Home'
 import Signup from './pages/Signup'
 import Fav from './pages/Fav'
 import Settings from './pages/Settings'
+import NotFound from './pages/NotFound'
 import './styles/App.css'
 
 const App = () => {

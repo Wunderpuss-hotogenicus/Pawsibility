@@ -9,7 +9,9 @@
     "build:dev": "webpack --mode=development",
     "build:prod": "webpack --mode=production --node-env=production",
     "watch": "webpack --watch",
-    "serve": "webpack serve"
+    "serve": "webpack serve",
+    "dev": "NODE_ENV=development webpack serve --open & nodemon server/server.js"
+
   },
   "repository": {
     "type": "git",
@@ -57,7 +59,6 @@
     "pg": "^8.10.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router": "^6.11.0",
-    "react-router-dom": "^6.11.0"
+    "react-router": "^6.11.0"
   }
 }

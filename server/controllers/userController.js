@@ -14,7 +14,6 @@ UserController.createUser = (req, res, next) => {
         message: { err: 'An error occured!' }
       })
     } else {
-      console.log(result.rows[0])
       next()
     }
   })
