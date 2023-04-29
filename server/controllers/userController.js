@@ -1,4 +1,4 @@
-const db = require('./model/dogmodel.js')
+const db = require('../model/dogmodel.js')
 
 const UserController = {}
 
