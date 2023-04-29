@@ -9,9 +9,9 @@ UserController.createUser = (req, res, next) => {
   db.query(text, values, (err, result) => {
     if (err) {
       return next({
-        log: 'There was an unknown error',
-        status: 500,
-        message: { err: 'An error occured!' }
+        log: 'There was an error creating user',
+        status: 400,
+        message: { err: 'An error occured while creating user!' }
       })
     } else {
       next()
@@ -27,12 +27,10 @@ UserController.verifyUser = (req, res, next) => {
   db.query(text, values)
     .then(result => {
       if (result.rows.length === 0) {
-        return next({
-          log: 'There was an unknown error',
-          status: 500,
-          message: { err: 'An error occured!' }
-        })
+        res.locals.verification = false;
+        return next();
       } else {
+        res.locals.verification = true;
         res.locals.username = req.body.username
         return next()
       }
@@ -46,6 +44,26 @@ UserController.setCookie = (req, res, next) => {
   console.log('inside of setCookie middleware')
   res.cookie('username', res.locals.username)
   return next()
+}
+
+UserController.updateUser = (req,res,next) => {
+  console.log('inside of updateUser middleware')
+
+  const {housing, kids,age} = req.body;
+  const text = 'UPDATE users SET housing = $1, kids = $2, age = $3 WHERE username = $4'
+  const values = [housing, kids, age, req.cookie.username]
+
+  db.query(text, values, (err, result) => {
+    if (err) {
+      return next({
+        log: 'There was an unknown error while updating user',
+        status: 500,
+        message: { err: 'An error occured while updating user!' }
+      })
+    } else {
+      next()
+    }
+  })
 }
 
 module.exports = UserController
