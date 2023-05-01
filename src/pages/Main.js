@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import {motion} from 'framer-motion'
 import RealNavBar from "../components/RealNavBar";
 
 const Main = () => {
@@ -131,7 +132,8 @@ const Main = () => {
         <div>
           {array[index].primary_photo_cropped ? (
             <div className="dog_photo_container">
-              <img
+              <motion.img
+                whileHover={{scale: 1.1}}
                 className="dog_photo"
                 src={array[index].primary_photo_cropped.full}
               />
@@ -149,7 +151,7 @@ const Main = () => {
           <div className="dog_info">
             <h2 className="dog_name">{array[index].name}</h2>
             <h4 className="dog_age">Age: {array[index].age}</h4>
-            <h4 className="dog_breed">Breed: {array[0].breeds.primary}</h4>
+            <h4 className="dog_breed">Breed: {array[index].breeds.primary}</h4>
             <h4 className="dog_gender">Gender: {array[index].gender}</h4>
             <h4 className="dog_size">Size: {array[index].size}</h4>
             <h4 className="dog_description">

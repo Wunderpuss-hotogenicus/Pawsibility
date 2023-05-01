@@ -223,6 +223,7 @@ input[type="password"]::placeholder {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 22px;
 }
 
 .dog_name{
@@ -284,7 +285,7 @@ input[type="password"]::placeholder {
 .previous{
   margin-right: 5px;
   padding: 8px 22px;
-  background-color: #c41616ad;
+  background-color: #c41616aa;
   color: #fff;
   font-size: 1.2rem !important;
   border: none;
