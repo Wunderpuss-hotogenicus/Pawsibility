@@ -23,7 +23,7 @@ module.exports = {
 
 // CREATE TABLE users (
 //     id SERIAL PRIMARY KEY,
-//     Username VARCHAR(255) NOT NULL,
+//     Username VARCHAR(255) UNIQUE NOT NULL,
 //     Password VARCHAR(255) NOT NULL,
 //     Housing VARCHAR(255),
 //     Kids BOOLEAN,
