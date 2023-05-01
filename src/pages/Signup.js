@@ -1,35 +1,39 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router'
+import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
 const Signup = () => {
-  const [username, setUsername] = useState()
-  const [password, setPassword] = useState()
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
   const navigate = useNavigate()
 
-  // const handleButtonClick = route => {
-  //   navigate(route)
-  // }
-  function handleClick (e) {
+  const handleClick = e => {
     e.preventDefault()
-    console.log(username, password)
-
     axios.post('/api/signup', {
       username,
       password
     })
-      // .then(response => {
-      //   console.log(response);
-      //   console.log('in the .then')
-      //   navigate('/settings/')
-      //   console.log('after navigate hook')
-      // })
-      navigate('/settings/')
-
+      .then(response => {
+        console.log('res', response.data)
+        navigate('/settings/')
+      })
+      .catch(err => {
+        console.log(`Username: ${username}, Password: ${password}`)
+        setUsername('')
+        setPassword('')
+      })
   }
+  //   axios.post('/api/signup', {
+  //     username,
+  //     password
+  //   })
+
+  //   navigate('/settings/')
+  // }
 
   return (
     <div id='signup'>
+      SIGN UP
       <form
       onSubmit={handleClick}
       >
@@ -45,7 +49,7 @@ const Signup = () => {
          />
         <label htmlFor="signupPassword"></label>
         <input
-        type="text"
+        type="password"
         id='signupPassword'
         placeholder='Enter a password'
         required
@@ -57,7 +61,6 @@ const Signup = () => {
          className='submit_btn'
          type="submit"
          value={'Submit'}
-        //  onClick={() => handleButtonClick('/settings/')}
         />
       </form>
     </div>

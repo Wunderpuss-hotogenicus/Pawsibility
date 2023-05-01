@@ -13,17 +13,17 @@ const PORT = 3000
 
 app.post('/api/signup', UserController.createUser, UserController.setCookie, (req, res) => {
   console.log('back in the router for signup')
-  return res.status(200)
+  return res.status(200).json('signed up')
 })
 
-app.post('/api/login', UserController.verifyUser, (req, res) => {
+app.post('/api/login', UserController.verifyUser, UserController.setCookie, (req, res) => {
   console.log('finished loging post request')
   console.log(res.locals.verification)
   return res.status(200).json(res.locals.verification)
 })
 
 app.patch('/api/form', UserController.updateUser, (req, res) => {
-  console.log('back in the router for updsateUser')
+  console.log('back in the router for updateUser')
   res.send(200)
 })
 

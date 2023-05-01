@@ -1,6 +1,5 @@
 const db = require('../model/dogmodel.js')
 
-
 const UserController = {}
 
 UserController.createUser = (req, res, next) => {
@@ -16,7 +15,7 @@ UserController.createUser = (req, res, next) => {
         message: { err: 'An error occured while creating user!' }
       })
     } else {
-      next()
+      return next()
     }
   })
 }
@@ -45,7 +44,7 @@ UserController.verifyUser = (req, res, next) => {
 UserController.setCookie = (req, res, next) => {
   console.log('inside of setCookie middleware')
   console.log('cookie value', res.locals.username)
-  res.cookie('username', 'hi')
+  res.cookie('username', res.locals.username)
   console.log(req.cookies.username)
   return next()
 }

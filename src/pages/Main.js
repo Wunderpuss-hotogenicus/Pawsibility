@@ -1,12 +1,12 @@
 import React from 'react'
 import RealNavBar from '../components/RealNavBar'
-const Fav = () => {
+const Main = () => {
   return (
     <div>
       <RealNavBar/>
-      Fav
+      Main
     </div>
   )
 }
 
-export default Fav
+export default Main
