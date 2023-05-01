@@ -74,7 +74,7 @@ UserController.updateUser = (req, res, next) => {
   console.log('cookie', req.cookies.username)
   console.log('req.body', req.body)
 
-  const { housing, kids, cats, dogs} = req.body
+  const { housing, kids, cats, dogs } = req.body
   const text = 'UPDATE users SET housing = $1, kids = $2, cats = $3, dogs = $4 WHERE username = $5'
   const values = [housing, kids, cats, dogs, req.cookies.username]
   console.log('housing kids cats dogs', housing, kids, cats, dogs)

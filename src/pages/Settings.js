@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import RealNavBar from "../components/RealNavBar";
 
 const Settings = () => {
   const [housing, setHousing] = useState();
@@ -23,7 +24,10 @@ const Settings = () => {
     navigate("/Main");
   }
   return (
+
     <div className="settings_container">
+          <RealNavBar />
+
       <div id="settings">
         <form onSubmit={handleClick}>
           <label htmlFor="housingQuestion">
