@@ -27,9 +27,15 @@ const Main = () => {
   url.search = params.toString()
 
   const redirectToExternalWebsite = () => {
+<<<<<<< HEAD
+    const url = 'https://secure.aspca.org/donate/ps-gn-p2?ms=MP_PMK_Googlenonbrandbroad&initialms=MP_PMK_Googlenonbrandbroad&pcode=WPSP2GO2PK01&lpcode=WPSP2GO1PK01&test&gad=1&gclid=EAIaIQobChMI4J2v3LXU_gIVU83jBx2GNQAkEAAYASAAEgJyQPD_BwE&gclsrc=aw.ds';
+    window.open(url);
+  };
+=======
     const url = 'https://secure.aspca.org/donate/ps-gn-p2?ms=MP_PMK_Googlenonbrandbroad&initialms=MP_PMK_Googlenonbrandbroad&pcode=WPSP2GO2PK01&lpcode=WPSP2GO1PK01&test&gad=1&gclid=EAIaIQobChMI4J2v3LXU_gIVU83jBx2GNQAkEAAYASAAEgJyQPD_BwE&gclsrc=aw.ds'
     window.open(url)
   }
+>>>>>>> dev
 
   const nextHandleClick = _ => {
     if (index + 1 === array.length) setIndex(0)
@@ -86,7 +92,11 @@ const Main = () => {
 
       setAccessToken(newaccesstoken)
     }
+<<<<<<< HEAD
+    getAccessToken();
+=======
     getAccessToken()
+>>>>>>> dev
   }, [])
 
   // fetch requiest to petfinder api

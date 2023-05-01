@@ -38,14 +38,6 @@ app.patch('/api/form', UserController.updateUser, (req, res) => {
   res.send(200)
 })
 
-app.all('/api/*', (req, res) => {
-  proxy.web(req, res, {
-    target: 'https://api.petfinder.com',
-    changeOrigin: true
-  });
-});
-
-
 // CATCH ALL ERROR HANDLER
 app.use('*', (req, res) => {
   res.status(404).send('Not Found')
