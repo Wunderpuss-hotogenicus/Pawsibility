@@ -30,10 +30,10 @@ const Main = () => {
   })
   url.search = params.toString()
 
-  const redirectToExternalWebsite = () => {
-    const url = 'https://secure.aspca.org/donate/ps-gn-p2?ms=MP_PMK_Googlenonbrandbroad&initialms=MP_PMK_Googlenonbrandbroad&pcode=WPSP2GO2PK01&lpcode=WPSP2GO1PK01&test&gad=1&gclid=EAIaIQobChMI4J2v3LXU_gIVU83jBx2GNQAkEAAYASAAEgJyQPD_BwE&gclsrc=aw.ds'
-    window.open(url)
-  }
+  // const redirectToExternalWebsite = () => {
+  //   const url = 'https://secure.aspca.org/donate/ps-gn-p2?ms=MP_PMK_Googlenonbrandbroad&initialms=MP_PMK_Googlenonbrandbroad&pcode=WPSP2GO2PK01&lpcode=WPSP2GO1PK01&test&gad=1&gclid=EAIaIQobChMI4J2v3LXU_gIVU83jBx2GNQAkEAAYASAAEgJyQPD_BwE&gclsrc=aw.ds'
+  //   window.open(url)
+  // }
 
   const previousHandleClick = _ => {
     if (index - 1 === -1) setIndex(array.length-1)
@@ -126,7 +126,7 @@ const Main = () => {
   if (array !== null) {
     return (
       <div className="div_container">
-        <button onClick={redirectToExternalWebsite}>Donate</button>
+        {/* <button onClick={redirectToExternalWebsite}>Donate</button> */}
         <RealNavBar />
         <div>
           {array[index].primary_photo_cropped ? (
@@ -159,16 +159,13 @@ const Main = () => {
               Characteristics: {array[index].tags.join(', ')}
             </h4>
             <div className="dog_btns">
+              <button className="previous" onClick={previousHandleClick}>Previous</button>
               <button className="adopt" onClick={adoptHandleClick}>Adopt Me</button>
               <button className="next" onClick={nextHandleClick}>Next</button>
             </div>
           </div>
         </div>
-        <button onClick={adoptHandleClick}>Adopt Me</button>
-        <button onClick={previousHandleClick}>Previous</button>
-        <button onClick={nextHandleClick}>Next</button>
       </div>
-    </div>
     )
   } else {
     return (

@@ -280,3 +280,86 @@ input[type="password"]::placeholder {
 .div_container{
   backdrop-filter: blur(5px);
 }
+
+.previous{
+  margin-right: 5px;
+  padding: 8px 22px;
+  background-color: #c41616ad;
+  color: #fff;
+  font-size: 1.2rem !important;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  margin-top: 1%;
+  margin-bottom: 1%;
+}
+
+.previous:hover{
+  background-color: #c41616d4;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
+}
+
+.donate{
+  padding: 8px 22px;
+  background-color: #77cf19ad;
+  color: #fff;
+  font-size: 1.2rem !important;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.donate:hover{
+  background-color: #77cf19df;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
+}
+
+.signup_b {
+  padding: 12px 24px;
+  background-color: #038f08cf;
+  color: #fff;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.login_b{
+  padding: 12px 24px;
+  background-color: #0078c2ce;
+  color: #fff;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.settings_b {
+  padding: 12px 24px;
+  background-color: #d12d2dce;
+  color: #fff;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.settings_b:hover {
+  background-color: #e11212;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
+}
+
+.signup_b:hover {
+  background-color: #038f08;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
+}
+
+.login_b:hover {
+  background-color: #0077c2;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
+}
