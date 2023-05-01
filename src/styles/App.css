@@ -55,6 +55,21 @@ body {
   transition: background-color 0.2s ease-in-out;
 }
 
+.settings_btn {
+  padding: 12px 24px;
+  background-color: #d12d2dce;
+  color: #fff;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.settings_btn:hover {
+  background-color: #e11212;
+}
+
 .signup_btn:hover {
   background-color: #038f08;
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
@@ -192,4 +207,76 @@ input[type="password"]::placeholder {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+
+.dog_photo{
+  height: 450px;
+  width: auto;
+  border-radius: 3%;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.dog_photo_container{
+  margin-top: 4%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dog_name{
+  font-size: 30px;
+  color: black;
+}
+
+.dog_info{
+  display: flex;
+  flex-direction:  column;
+  text-align: center;
+}
+
+
+
+.adopt{
+  margin-right: 5px;
+  padding: 8px 22px;
+  background-color: #035c06aa;
+  color: #fff;
+  font-size: 1.2rem !important;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  margin-top: 1%;
+  margin-bottom: 1%;
+}
+
+.adopt:hover {
+  background-color: #035c06ce;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
+}
+
+.next:hover {
+  background-color: #1ec324c7;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
+}
+
+.next{
+  margin-left: 5px;
+  margin-right: 5px;
+  padding: 8px 22px;
+  background-color: #1ec324ad;
+  color: #fff;
+  font-size: 1.2rem !important;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  margin-top: 1%;
+  margin-bottom: 1%;
+}
+
+.div_container{
+  backdrop-filter: blur(5px);
 }

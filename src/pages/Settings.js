@@ -3,24 +3,24 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Settings = () => {
-  const [housing, setHousing] = useState();
-  const [kids, setKids] = useState();
+  const [housing, setHousing] = useState()
+  const [kids, setKids] = useState()
   // const [age, setAge] = useState()
-  const [cats, setCats] = useState();
-  const [dogs, setDogs] = useState();
+  const [cats, setCats] = useState()
+  const [dogs, setDogs] = useState()
 
   const navigate = useNavigate();
   function handleClick(e) {
-    e.preventDefault();
-    console.log(housing, kids, cats, dogs);
-    console.log(Boolean(kids));
-    axios.patch("/api/form", {
+    e.preventDefault()
+    console.log(housing, kids, cats, dogs)
+    console.log(Boolean(kids))
+    axios.patch('/api/form', {
       housing,
       kids,
       cats,
       dogs,
-    });
-    navigate("/Main");
+    })
+    navigate("/Main")
   }
   return (
     <div className="settings_container">
@@ -72,7 +72,7 @@ const Settings = () => {
             <option value={false}>No</option>
           </select>
 
-          <input type="submit" value={"Submit"} />
+          <input type="submit" value={'Submit'} />
         </form>
       </div>
     </div>

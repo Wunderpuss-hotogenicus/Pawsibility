@@ -10,7 +10,7 @@ const RealNavBar = () => {
       {/* <button onClick={() => handleButtonClick('/')}>Home</button> */}
       <button className = "signup_btn" onClick={() => handleButtonClick('/Main')}>Home</button>
       <button className = "login_btn" onClick={() => handleButtonClick('/fav/')}>Favs</button>
-      <button className = "login_btn" onClick={() => handleButtonClick('/settings/')}>Settings</button>
+      <button className = "settings_btn" onClick={() => handleButtonClick('/settings/')}>Settings</button>
     </div>
   )
 }
