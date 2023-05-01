@@ -26,9 +26,10 @@ module.exports = {
 //     Username VARCHAR(255) UNIQUE NOT NULL,
 //     Password VARCHAR(255) NOT NULL,
 //     Housing VARCHAR(255),
+//     Location VARCHAR(10),
 //     Kids BOOLEAN,
-//     Cats BOOLEAN(255),
-//     Dogs BOOLEAN(255)
+//     Cats BOOLEAN,
+//     Dogs BOOLEAN
 //   );
 
 // CREATE TABLE dogs (

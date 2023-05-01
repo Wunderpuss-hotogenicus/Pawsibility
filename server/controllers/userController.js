@@ -5,8 +5,8 @@ const UserController = {}
 UserController.createUser = (req, res, next) => {
   console.log('in the createUser controller')
   res.locals.username = req.body.username
-  const text = 'INSERT INTO users (username, password, kids, cats, dogs) VALUES ($1, $2, $3, $4, $5);'
-  const values = [req.body.username, req.body.password, req.body.kids, req.body.cats, req.body.dogs]
+  const text = 'INSERT INTO users (username, password, kids, cats, dogs, location) VALUES ($1, $2, $3, $4, $5, $6);'
+  const values = [req.body.username, req.body.password, req.body.kids, req.body.cats, req.body.dogs, req.body.location]
   db.query(text, values, (err, result) => {
     if (err) {
       console.log('entering error')
@@ -74,10 +74,10 @@ UserController.updateUser = (req, res, next) => {
   console.log('cookie', req.cookies.username)
   console.log('req.body', req.body)
 
-  const { housing, kids, cats, dogs} = req.body
-  const text = 'UPDATE users SET housing = $1, kids = $2, cats = $3, dogs = $4 WHERE username = $5'
-  const values = [housing, kids, cats, dogs, req.cookies.username]
-  console.log('housing kids cats dogs', housing, kids, cats, dogs)
+  const { housing, kids, cats, dogs, location } = req.body
+  const text = 'UPDATE users SET housing = $1, kids = $2, cats = $3, dogs = $4, location = $5 WHERE username = $6'
+  const values = [housing, kids, cats, dogs, location, req.cookies.username]
+  console.log('housing kids cats dogs', housing, kids, cats, dogs, location)
 
   db.query(text, values, (err, result) => {
     if (err) {
