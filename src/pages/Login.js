@@ -23,6 +23,7 @@ const Login = () => {
     })
       .then(response => {
       // redirect to home
+        
         console.log('res', response.data)
         if (response.data) {
           navigate('/main')
@@ -32,9 +33,9 @@ const Login = () => {
       })
       .catch(err => {
         console.log(`Username: ${username}, Password: ${password}`)
-        setUsername('')
-        setPassword('')
+        
       })
+     
   }
 
   return (
