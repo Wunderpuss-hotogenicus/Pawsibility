@@ -18,6 +18,17 @@ const Main = () => {
   const [index, setIndex] = useState(0)
 
 
+  const url = new URL('https://api.petfinder.com/v2/animals')
+  const params = new URLSearchParams({
+    type: 'dog',
+    size: userHousing,
+    good_with_children: userKids,
+    good_with_cats: userCats,
+    good_with_dogs: userDogs
+  })
+  url.search = params.toString();
+
+
   const redirectToExternalWebsite = () => {
     const url = 'https://secure.aspca.org/donate/ps-gn-p2?ms=MP_PMK_Googlenonbrandbroad&initialms=MP_PMK_Googlenonbrandbroad&pcode=WPSP2GO2PK01&lpcode=WPSP2GO1PK01&test&gad=1&gclid=EAIaIQobChMI4J2v3LXU_gIVU83jBx2GNQAkEAAYASAAEgJyQPD_BwE&gclsrc=aw.ds';
      window.open(url);
@@ -59,9 +70,16 @@ const Main = () => {
   useEffect(() => {
     const getAccessToken = async () => {
       const params = new URLSearchParams()
+      console.log('params1: ', params)
       params.append('grant_type', 'client_credentials')
+      console.log('params2: ', params)
+
       params.append('client_id', clientid)
+      console.log('params3: ', params)
+
       params.append('secret_id', secretid)
+      console.log('params4: ', params)
+
       const response = await fetch(
         'https://api.petfinder.com/v2/oauth2/token',
         {
@@ -85,7 +103,7 @@ const Main = () => {
     console.log('TESTSTSTSTSTSST:', `${accesstoken}`)
     const fetchPets = async () => {
       const petResults = await axios.get(
-        apiUrl, {
+        url, {
           headers: {
             Authorization: `Bearer ${accesstoken}`
           }
