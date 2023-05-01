@@ -4,8 +4,11 @@ const express = require('express')
 const app = express()
 const UserController = require('./controllers/userController')
 const cookieParser = require('cookie-parser')
+const cors = require('cors')
+
 app.use(cookieParser())
 app.use(express.json())
+app.use(cors());
 
 const PORT = 3000
 
@@ -14,6 +17,10 @@ const PORT = 3000
 app.post('/api/signup', UserController.createUser, UserController.setCookie, (req, res) => {
   console.log('back in the router for signup')
   return res.status(200).json('signed up')
+})
+
+app.get('/api/userData', UserController.getUser, (req, res) => {
+  return res.status(200).json(res.locals.userData)
 })
 
 app.post('/api/login', UserController.verifyUser, UserController.setCookie, (req, res) => {
@@ -25,6 +32,11 @@ app.post('/api/login', UserController.verifyUser, UserController.setCookie, (req
 app.patch('/api/form', UserController.updateUser, (req, res) => {
   console.log('back in the router for updateUser')
   res.send(200)
+})
+
+// CATCH ALL ERROR HANDLER
+app.use('*', (req, res) => {
+  res.status(404).send('Not Found')
 })
 
 // GLOBAL ERROR HANDLER
