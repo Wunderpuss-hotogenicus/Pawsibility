@@ -5,12 +5,16 @@ const app = express()
 const UserController = require('./controllers/userController')
 const cookieParser = require('cookie-parser')
 const cors = require('cors')
+const httpProxy = require('http-proxy');
 
 app.use(cookieParser())
 app.use(express.json())
 app.use(cors());
+const proxy = httpProxy.createProxyServer();
+
 
 const PORT = 3000
+
 
 // app.get('/', UserController.addcookie, (req, res))
 
@@ -33,6 +37,14 @@ app.patch('/api/form', UserController.updateUser, (req, res) => {
   console.log('back in the router for updateUser')
   res.send(200)
 })
+
+app.all('/api/*', (req, res) => {
+  proxy.web(req, res, {
+    target: 'https://api.petfinder.com',
+    changeOrigin: true
+  });
+});
+
 
 // CATCH ALL ERROR HANDLER
 app.use('*', (req, res) => {
