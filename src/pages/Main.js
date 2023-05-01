@@ -6,17 +6,15 @@ const Main = () => {
   const clientid = 'BnOiXaaLRv1CbvQeiwUrjKtQgIH2DRpTUEYXAfcSgSzFhvg1JX'
   const secretid = 'vnjIlV2ZZTwM1ykXmGV7vp67jdsqhpk5RJVOL6w4'
   // const apiUrl = `https://api.petfinder.com/v2/animals?type=dog&size=${userHousing}&good_with_children=${userKids}&good_with_cats=${userCats}&good_with_dogs=${userDogs}`
-  const apiUrl = `https://api.petfinder.com/v2/animals?type=dog&size=large`;
-  
+  const apiUrl = 'https://api.petfinder.com/v2/animals?type=dog&size=large'
 
-  const [array, setResults] = useState()
+  const [array, setResults] = useState(null)
   const [accesstoken, setAccessToken] = useState()
   const [userHousing, setUserHousing] = useState()
   const [userKids, setUserKids] = useState()
   const [userCats, setUserCats] = useState()
   const [userDogs, setUserDogs] = useState()
   const [index, setIndex] = useState(0)
-
 
   const url = new URL('https://api.petfinder.com/v2/animals')
   const params = new URLSearchParams({
@@ -26,22 +24,20 @@ const Main = () => {
     good_with_cats: userCats,
     good_with_dogs: userDogs
   })
-  url.search = params.toString();
-
+  url.search = params.toString()
 
   const redirectToExternalWebsite = () => {
-    const url = 'https://secure.aspca.org/donate/ps-gn-p2?ms=MP_PMK_Googlenonbrandbroad&initialms=MP_PMK_Googlenonbrandbroad&pcode=WPSP2GO2PK01&lpcode=WPSP2GO1PK01&test&gad=1&gclid=EAIaIQobChMI4J2v3LXU_gIVU83jBx2GNQAkEAAYASAAEgJyQPD_BwE&gclsrc=aw.ds';
-     window.open(url);
-  };
+    const url = 'https://secure.aspca.org/donate/ps-gn-p2?ms=MP_PMK_Googlenonbrandbroad&initialms=MP_PMK_Googlenonbrandbroad&pcode=WPSP2GO2PK01&lpcode=WPSP2GO1PK01&test&gad=1&gclid=EAIaIQobChMI4J2v3LXU_gIVU83jBx2GNQAkEAAYASAAEgJyQPD_BwE&gclsrc=aw.ds'
+    window.open(url)
+  }
 
   const nextHandleClick = _ => {
     if (index + 1 === array.length) setIndex(0)
     else setIndex(index + 1)
   }
   const adoptHandleClick = _ => {
-    window.open(array[index].animals[0].url)
+    window.open(array[index].url)
   }
-
 
   useEffect(() => {
     fetch('/api/userData')
@@ -63,8 +59,6 @@ const Main = () => {
         console.log('error: ', err)
       })
   }, [])
-
-  
 
   // creating access token
   useEffect(() => {
@@ -91,11 +85,8 @@ const Main = () => {
       const newaccesstoken = newResult.access_token
 
       setAccessToken(newaccesstoken)
-
-
     }
-    getAccessToken();
-
+    getAccessToken()
   }, [])
 
   // fetch requiest to petfinder api
@@ -108,42 +99,44 @@ const Main = () => {
             Authorization: `Bearer ${accesstoken}`
           }
         })
-      // const results = await petResults.json()
-      // console.log(json.animals)
-      console.log(userHousing)
-      console.log(await petResults)
+      const petResultsObj = await petResults
+      const newPetResultsObj = petResultsObj.data.animals
+      console.log(newPetResultsObj)
+      setResults(newPetResultsObj)
     }
     fetchPets()
   }, [accesstoken])
-  
-
-  
 
   // useEffect(() => {
   //   fetch()
   // }, [userHousing, userKids, userCats, userDogs])
-
-  return (
+  if (array !== null) {
+    return (
   <div>
       <button onClick={redirectToExternalWebsite}>Donate</button>
-      {/* <RealNavBar/>
+      <RealNavBar/>
       Main
       <div>
-        <img src={array[index].animals[0].photos[0].medium}/>
+      {array[index].primary_photo_cropped
+        ? (
+        <img src={array[index].primary_photo_cropped.full}/>
+          )
+        : <img src="https://searx.be/image_proxy?url=https%3A%2F%2Fencrypted-tbn0.gstatic.com%2Fimages%3Fq%3Dtbn%3AANd9GcQdTFn3qQcjI4LfR1ulwyUaYyG9g4woaez8HWh967Zid21ZNzg3%26s&h=197db55d6d490ae7a7fc4532877be0ea1cabcc165b4b3e2ce22101945365a332" alt="" /> }
+
         <div>
-        name {array[index].animals[0].name}
-        age {array[index].animals[0].age}
-        breed {array[0].animals[0].breeds.primary}
-        gender {array[index].animals[0].gender}
-        size {array[index].animals[0].size}
-        description {array[index].animals[0].description}
-        tags {array[index].animals[0].tags}
+        name {array[index].name}
+        age {array[index].age}
+        breed {array[0].breeds.primary}
+        gender {array[index].gender}
+        size {array[index].size}
+        description {array[index].description}
+        tags {array[index].tags}
         </div>
         <button onClick={adoptHandleClick}>Adopt Me</button>
         <button onClick={nextHandleClick}>Next</button>
-      </div> */}
+      </div>
     </div>
-  )
+    )
+  }
 }
-
 export default Main
