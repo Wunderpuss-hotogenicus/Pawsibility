@@ -31,7 +31,7 @@ const Main = () => {
 
   const redirectToExternalWebsite = () => {
     const url = 'https://secure.aspca.org/donate/ps-gn-p2?ms=MP_PMK_Googlenonbrandbroad&initialms=MP_PMK_Googlenonbrandbroad&pcode=WPSP2GO2PK01&lpcode=WPSP2GO1PK01&test&gad=1&gclid=EAIaIQobChMI4J2v3LXU_gIVU83jBx2GNQAkEAAYASAAEgJyQPD_BwE&gclsrc=aw.ds';
-     window.open(url);
+    window.open(url);
   };
 
   const nextHandleClick = _ => {
@@ -91,11 +91,8 @@ const Main = () => {
       const newaccesstoken = newResult.access_token
 
       setAccessToken(newaccesstoken)
-
-
     }
     getAccessToken();
-
   }, [])
 
   // fetch requiest to petfinder api
@@ -126,7 +123,9 @@ const Main = () => {
   return (
   <div>
       <button onClick={redirectToExternalWebsite}>Donate</button>
-      {/* <RealNavBar/>
+      <RealNavBar/>
+
+      {/*
       Main
       <div>
         <img src={array[index].animals[0].photos[0].medium}/>
