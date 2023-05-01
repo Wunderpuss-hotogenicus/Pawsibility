@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import RealNavBar from "../components/RealNavBar";
 
 const Settings = () => {
   const [housing, setHousing] = useState();
@@ -8,6 +9,7 @@ const Settings = () => {
   // const [age, setAge] = useState()
   const [cats, setCats] = useState();
   const [dogs, setDogs] = useState();
+  const [location, setZipCode] = useState();
 
   const navigate = useNavigate();
   function handleClick(e) {
@@ -15,6 +17,7 @@ const Settings = () => {
     console.log(housing, kids, cats, dogs);
     console.log(Boolean(kids));
     axios.patch("/api/form", {
+      location,
       housing,
       kids,
       cats,
@@ -23,7 +26,10 @@ const Settings = () => {
     navigate("/Main");
   }
   return (
+
     <div className="settings_container">
+          <RealNavBar />
+
       <div id="settings">
         <form onSubmit={handleClick}>
           <label htmlFor="housingQuestion">
@@ -71,8 +77,9 @@ const Settings = () => {
             <option value={true}>Yes</option>
             <option value={false}>No</option>
           </select>
-
-          <input type="submit" value={"Submit"} />
+          <label htmlFor ='location'>Zipcode</label>
+          {/* <input type ='text' id ='location' onCh ange ={(e) => setZipCode(e.target.value)}/> */}
+          <input type="submit" value={'Submit'} />
         </form>
       </div>
     </div>
