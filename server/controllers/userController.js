@@ -55,13 +55,14 @@ UserController.updateUser = (req, res, next) => {
   console.log('cookie', req.cookies.username)
   console.log('req.body', req.body)
 
-  const { housing, kids, age } = req.body
-  const text = 'UPDATE users SET housing = $1, kids = $2, age = $3 WHERE username = $4'
-  const values = [housing, kids, age, req.cookies.username]
-  console.log('housing kids age', housing, kids, age)
+  const { housing, kids, cats, dogs} = req.body
+  const text = 'UPDATE users SET housing = $1, kids = $2, cats = $3, dogs = $4 WHERE username = $5'
+  const values = [housing, kids, cats, dogs, req.cookies.username]
+  console.log('housing kids cats dogs', housing, kids, cats, dogs)
 
   db.query(text, values, (err, result) => {
     if (err) {
+      console.log('entering error while updating user')
       return next({
         log: 'There was an unknown error while updating user',
         status: 500,
