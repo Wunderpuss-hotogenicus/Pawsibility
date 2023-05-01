@@ -5,10 +5,11 @@ const UserController = {}
 UserController.createUser = (req, res, next) => {
   console.log('in the createUser controller')
   res.locals.username = req.body.username
-  const text = 'INSERT INTO users (username, password, housing, kids, age) VALUES ($1, $2, $3, $4, $5);'
-  const values = [req.body.username, req.body.password, req.body.housing, req.body.kids, req.body.age]
+  const text = 'INSERT INTO users (username, password, kids, cats, dogs) VALUES ($1, $2, $3, $4, $5);'
+  const values = [req.body.username, req.body.password, req.body.kids, req.body.cats, req.body.dogs]
   db.query(text, values, (err, result) => {
     if (err) {
+      console.log('entering error')
       return next({
         log: 'There was an error creating user',
         status: 400,

@@ -27,7 +27,8 @@ module.exports = {
 //     Password VARCHAR(255) NOT NULL,
 //     Housing VARCHAR(255),
 //     Kids BOOLEAN,
-//     Age INTEGER
+//     Cats BOOLEAN(255),
+//     Dogs BOOLEAN(255)
 //   );
 
 // CREATE TABLE dogs (
