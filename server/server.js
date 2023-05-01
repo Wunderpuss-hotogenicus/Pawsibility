@@ -16,6 +16,10 @@ app.post('/api/signup', UserController.createUser, UserController.setCookie, (re
   return res.status(200).json('signed up')
 })
 
+app.get('/api/userData', UserController.getUser, (req, res) => {
+  return res.status(200).json(res.locals.userData)
+})
+
 app.post('/api/login', UserController.verifyUser, UserController.setCookie, (req, res) => {
   console.log('finished loging post request')
   console.log(res.locals.verification)
@@ -25,6 +29,11 @@ app.post('/api/login', UserController.verifyUser, UserController.setCookie, (req
 app.patch('/api/form', UserController.updateUser, (req, res) => {
   console.log('back in the router for updateUser')
   res.send(200)
+})
+
+// CATCH ALL ERROR HANDLER
+app.use('*', (req, res) => {
+  res.status(404).send('Not Found')
 })
 
 // GLOBAL ERROR HANDLER
