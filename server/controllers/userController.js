@@ -42,6 +42,25 @@ UserController.verifyUser = (req, res, next) => {
     })
 }
 
+UserController.getUser = (req,res,next) => {
+  console.log('inside of getUser middleware')
+  console.log('username cookie: ', req.cookies.username)
+
+  const text = 'SELECT housing, kids, cats, dogs FROM users WHERE username = $1'
+  const values = [req.cookies.username]
+
+  db.query(text, values)
+    .then(result => {
+      res.locals.userData = result
+      return next()
+    })
+    .catch(err => {
+      console.log('theres been an error in getUser middleware')
+    })
+  }
+
+
+
 UserController.setCookie = (req, res, next) => {
   console.log('inside of setCookie middleware')
   console.log('cookie value', res.locals.username)

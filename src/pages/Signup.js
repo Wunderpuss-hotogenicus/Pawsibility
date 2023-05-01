@@ -33,7 +33,7 @@ const Signup = () => {
 
   return (
     <div id='signup'>
-      SIGN UP
+      <h3>SIGN UP</h3>
       <form
       onSubmit={handleClick}
       >
