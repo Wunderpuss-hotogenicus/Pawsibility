@@ -4,8 +4,11 @@ const express = require('express')
 const app = express()
 const UserController = require('./controllers/userController')
 const cookieParser = require('cookie-parser')
+const cors = require('cors')
+
 app.use(cookieParser())
 app.use(express.json())
+app.use(cors());
 
 const PORT = 3000
 
