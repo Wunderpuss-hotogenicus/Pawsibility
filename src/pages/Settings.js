@@ -4,8 +4,8 @@ import axios from "axios";
 import RealNavBar from "../components/RealNavBar";
 
 const Settings = () => {
-  const [housing, setHousing] = useState();
-  const [kids, setKids] = useState();
+  const [housing, setHousing] = useState()
+  const [kids, setKids] = useState()
   // const [age, setAge] = useState()
   const [cats, setCats] = useState();
   const [dogs, setDogs] = useState();
@@ -22,8 +22,8 @@ const Settings = () => {
       kids,
       cats,
       dogs,
-    });
-    navigate("/Main");
+    })
+    navigate("/Main")
   }
   return (
 
