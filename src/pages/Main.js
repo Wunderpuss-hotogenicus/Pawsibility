@@ -15,6 +15,7 @@ const Main = () => {
   const [userCats, setUserCats] = useState()
   const [userDogs, setUserDogs] = useState()
   const [index, setIndex] = useState(0)
+  const [userLocation, setUserLocation] = useState();
 
   const url = new URL('https://api.petfinder.com/v2/animals')
   const params = new URLSearchParams({
@@ -23,7 +24,9 @@ const Main = () => {
     good_with_children: userKids,
     good_with_cats: userCats,
     good_with_dogs: userDogs,
-    sort: 'random'
+    sort: 'random',
+    userLocation: userLocation
+    // distance: 500
   })
   url.search = params.toString()
 
@@ -32,10 +35,16 @@ const Main = () => {
     window.open(url)
   }
 
+  const previousHandleClick = _ => {
+    if (index - 1 === -1) setIndex(array.length-1)
+    else setIndex(index - 1)
+  }
+
   const nextHandleClick = _ => {
     if (index + 1 === array.length) setIndex(0)
     else setIndex(index + 1)
   }
+  
   const adoptHandleClick = _ => {
     window.open(array[index].url)
   }
@@ -45,7 +54,7 @@ const Main = () => {
       .then(res => res.json())
       .then(data => {
         console.log('users data', data)
-        const { housing, kids, cats, dogs } = data.rows[0]
+        const { housing, kids, cats, dogs, location } = data.rows[0]
         if (housing === 'Apartment') {
           setUserHousing('small,medium')
         } else {
@@ -55,6 +64,8 @@ const Main = () => {
         setUserKids(kids)
         setUserCats(cats)
         setUserDogs(dogs)
+        setUserLocation(location)
+
       })
       .catch(err => {
         console.log('error: ', err)
@@ -92,7 +103,6 @@ const Main = () => {
 
   // fetch requiest to petfinder api
   useEffect(() => {
-    console.log('TESTSTSTSTSTSST:', `${accesstoken}`)
     const fetchPets = async () => {
       const petResults = await axios.get(
         url, {
@@ -134,9 +144,18 @@ const Main = () => {
         tags {array[index].tags}
         </div>
         <button onClick={adoptHandleClick}>Adopt Me</button>
+        <button onClick={previousHandleClick}>Previous</button>
         <button onClick={nextHandleClick}>Next</button>
       </div>
     </div>
+    )
+  } else {
+    return (
+      <div>
+         <RealNavBar/>
+
+         Can not find dogs. Please update your settings.
+      </div>
     )
   }
 }
